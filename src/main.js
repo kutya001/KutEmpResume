@@ -297,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (sessionStorage.getItem('resume_viewed')) return;
 
         // ВАЖНО: Вставь сюда URL от Google Apps Script
-        const GOOGLE_SCRIPT_URL = 'ТВОЙ_СКОПИРОВАННЫЙ_URL_ОТ_GOOGLE'; 
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyOLj02VAv0fhNfhzWPTeKLEdBN8XkuF2_M3VwGiDRv54m7UQRaS_Iiz5O3p7hIrGDr/exec'; 
         
         // 1. Собираем локальные данные браузера
         const time = new Date().toLocaleTimeString('ru-RU');

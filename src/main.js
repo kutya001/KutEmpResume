@@ -291,27 +291,56 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Уведомление в Telegram
     // --- Безопасное Уведомление о просмотрах ---
-    const sendTelegramNotification = () => {
-        // Если в этой сессии уже отправляли, ничего не делаем
+    // --- Продвинутая аналитика просмотров ---
+    const sendTelegramNotification = async () => {
+        // Защита от спама при обновлении страницы
         if (sessionStorage.getItem('resume_viewed')) return;
 
-        // ВАЖНО: Вставь сюда URL, который ты скопировал из Google Apps Script
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxBtaJyrUZ6Gjwj9RAgXMJVdAV4vJz1kPvUPD8aZqtXDqcdJqYV3aQKMDYK7JvDdIem/exec'; 
+        // ВАЖНО: Вставь сюда URL от Google Apps Script
+        const GOOGLE_SCRIPT_URL = 'ТВОЙ_СКОПИРОВАННЫЙ_URL_ОТ_GOOGLE'; 
         
+        // 1. Собираем локальные данные браузера
         const time = new Date().toLocaleTimeString('ru-RU');
-        const lang = navigator.language || 'неизвестно';
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const ua = navigator.userAgent; // Информация об ОС, браузере и встроенных приложениях (Instagram/TG)
+        const ref = document.referrer || 'Прямой заход (или ссылка из мессенджера)';
+        const screen = `${window.screen.width}x${window.screen.height}`;
         
-        // Формируем параметры для безопасного GET-запроса
-        const params = new URLSearchParams({ time, lang });
-        const requestUrl = `${GOOGLE_SCRIPT_URL}?${params.toString()}`;
+        // 2. Пытаемся получить IP и геолокацию (может блокироваться AdBlock-ерами)
+        let geo = { city: 'Неизвестно', country_name: 'Неизвестно', ip: 'Скрыт', org: 'Неизвестно' };
+        try {
+            const geoRes = await fetch('https://ipapi.co/json/');
+            if (geoRes.ok) geo = await geoRes.json();
+        } catch (error) {
+            console.log('Геолокация заблокирована адблокером');
+        }
 
-        // Отправляем запрос в режиме 'no-cors', чтобы браузер не ругался на кросс-доменные запросы
-        fetch(requestUrl, { mode: 'no-cors' })
+        // 3. Формируем итоговый пакет данных
+        const payload = {
+            time: time,
+            tz: tz,
+            ua: ua,
+            ref: ref,
+            screen: screen,
+            city: geo.city || 'Неизвестно',
+            country: geo.country_name || 'Неизвестно',
+            ip: geo.ip || 'Скрыт',
+            provider: geo.org || 'Неизвестно' // Провайдер связи (иногда тут светится название компании)
+        };
+
+        // 4. Безопасно отправляем на наш Google-бекенд
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'text/plain;charset=utf-8', // Используем text/plain для обхода строгих CORS политик
+            },
+            body: JSON.stringify(payload)
+        })
         .then(() => {
-            // Записываем в сессию, чтобы уведомление не дублировалось при обновлении страницы
             sessionStorage.setItem('resume_viewed', 'true');
         })
-        .catch(error => console.error('Сбой аналитики:', error));
+        .catch(error => console.error('Ошибка аналитики:', error));
     };
 
     sendTelegramNotification();

@@ -292,56 +292,53 @@ document.addEventListener("DOMContentLoaded", function() {
     // Уведомление в Telegram
     // --- Безопасное Уведомление о просмотрах ---
     // --- Продвинутая аналитика просмотров ---
-    const sendTelegramNotification = async () => {
-        // Защита от спама при обновлении страницы
-        if (sessionStorage.getItem('resume_viewed')) return;
+const sendTelegramNotification = async () => {
+    if (sessionStorage.getItem('resume_viewed')) return;
 
-        // ВАЖНО: Вставь сюда URL от Google Apps Script
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyOLj02VAv0fhNfhzWPTeKLEdBN8XkuF2_M3VwGiDRv54m7UQRaS_Iiz5O3p7hIrGDr/exec'; 
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyOLj02VAv0fhNfhzWPTeKLEdBN8XkuF2_M3VwGiDRv54m7UQRaS_Iiz5O3p7hIrGDr/exec'; 
+    
+    const time = new Date().toLocaleTimeString('ru-RU');
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const ua = navigator.userAgent;
+    const ref = document.referrer || 'Прямой заход';
+    const screen = `${window.screen.width}x${window.screen.height}`;
+    
+    let geo = { city: 'Неизвестно', country_name: 'Неизвестно', ip: 'Скрыт', org: 'Неизвестно' };
+    
+    try {
+        // Добавляем timeout, чтобы скрипт не вис, если сервис геолокации недоступен
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3000);
         
-        // 1. Собираем локальные данные браузера
-        const time = new Date().toLocaleTimeString('ru-RU');
-        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        const ua = navigator.userAgent; // Информация об ОС, браузере и встроенных приложениях (Instagram/TG)
-        const ref = document.referrer || 'Прямой заход (или ссылка из мессенджера)';
-        const screen = `${window.screen.width}x${window.screen.height}`;
-        
-        // 2. Пытаемся получить IP и геолокацию (может блокироваться AdBlock-ерами)
-        let geo = { city: 'Неизвестно', country_name: 'Неизвестно', ip: 'Скрыт', org: 'Неизвестно' };
-        try {
-            const geoRes = await fetch('https://ipapi.co/json/');
-            if (geoRes.ok) geo = await geoRes.json();
-        } catch (error) {
-            console.log('Геолокация заблокирована адблокером');
-        }
+        const geoRes = await fetch('https://ipapi.co/json/', { signal: controller.signal });
+        if (geoRes.ok) geo = await geoRes.json();
+        clearTimeout(timeoutId);
+    } catch (error) {
+        console.log('Geo-info fetch failed');
+    }
 
-        // 3. Формируем итоговый пакет данных
-        const payload = {
-            time: time,
-            tz: tz,
-            ua: ua,
-            ref: ref,
-            screen: screen,
-            city: geo.city || 'Неизвестно',
-            country: geo.country_name || 'Неизвестно',
-            ip: geo.ip || 'Скрыт',
-            provider: geo.org || 'Неизвестно' // Провайдер связи (иногда тут светится название компании)
-        };
-
-        // 4. Безопасно отправляем на наш Google-бекенд
-        fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'text/plain;charset=utf-8', // Используем text/plain для обхода строгих CORS политик
-            },
-            body: JSON.stringify(payload)
-        })
-        .then(() => {
-            sessionStorage.setItem('resume_viewed', 'true');
-        })
-        .catch(error => console.error('Ошибка аналитики:', error));
+    const payload = {
+        time, tz, ua, ref, screen,
+        city: geo.city || 'Неизвестно',
+        country: geo.country_name || 'Неизвестно',
+        ip: geo.ip || 'Скрыт',
+        provider: geo.org || 'Неизвестно'
     };
 
-    sendTelegramNotification();
+    // ВАЖНО: Google Apps Script не поддерживает CORS для POST запросов с типом 'application/json'
+    // Поэтому мы отправляем данные как простой текст, а на стороне скрипта парсим JSON.
+    fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Позволяет отправить запрос без ошибок CORS
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'text/plain'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(() => {
+        sessionStorage.setItem('resume_viewed', 'true');
+    })
+    .catch(err => console.error('Error:', err));
+};
 });

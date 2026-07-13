@@ -48,7 +48,16 @@ export default function ResumePDFModal({ isOpen, onClose, lang }) {
     phone: 'Телефон',
     telegram: 'Telegram',
     whatsapp: 'WhatsApp',
-    downloadPdf: 'Печать / Сохранить  // Shared sheet layout component
+    downloadPdf: 'Печать / Сохранить в PDF',
+    close: 'Закрыть',
+    previewTitle: 'Предпросмотр резюме (A4)',
+    portfolio: 'Портфолио',
+    contacts: 'Контакты',
+  };
+
+  const handlePrint = () => {
+    window.print();
+  };
   const ResumeSheet = () => (
     <div className="resume-page flex flex-col justify-between select-text">
       <div>

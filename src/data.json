@@ -26,7 +26,7 @@
       "sectionTitle": "Профессиональный путь",
       "showMore": "Показать ещё",
       "jobs": [
-        { "role": "Разработчик \"Отчетность и Аналитика\"", "company": "Кумтор Голд Компани", "dates": "Окт 2025 — Наст. время", "desc": "Исправление багов, написание программного кода, оптимизация процессов.", "img": "kgc.jpg", "icon": "fa-code" },
+        { "role": "Разработчик \"Отчетность и Аналитика\"", "company": "Кумтор Голд Компани", "dates": "Окт 2025 — Наст. время", "desc": "Разработка/доработка ERP решений и прочих аналитических систем ведения учёта, написание программного кода, оптимизация процессов.", "img": "kgc.jpg", "icon": "fa-code" },
         { "role": "Бизнес-аналитик", "company": "Кумтор Голд Компани", "dates": "Авг 2023 — Окт 2025", "desc": "Анализ бизнес процессов, разработка и составление ТЗ, тестирование, документирование.", "img": "kgc.jpg", "icon": "fa-project-diagram" },
         { "role": "Ментор (Data Analysis)", "company": "CodeInfinity", "dates": "Июнь 2024 — Март 2025", "desc": "Обучение по Анализу данных: Excel, SQL, Power BI.", "img": "CodeInfinity.jpg", "icon": "fa-chalkboard-teacher" },
         { "role": "Тренер-консультант", "company": "DenMar", "dates": "Фев 2023 — Янв 2025", "desc": "Преподавание уроков и проведение тренингов по MS Excel (Pro уровень).", "img": "DenMar.jpg", "icon": "fa-file-excel" },
@@ -116,7 +116,7 @@
       "sectionTitle": "Кесиптик жол",
       "showMore": "Дагы көрсөтүү",
       "jobs": [
-        { "role": "\"Отчеттуулук жана Аналитика\" иштеп чыгуучусу", "company": "Кумтор Голд Компани", "dates": "Окт 2025 — Учурда", "desc": "Мүчүлүштүктөрдү оңдоо, программалык код жазуу, процесстерди оптималдаштыруу.", "img": "kgc.jpg", "icon": "fa-code" },
+        { "role": "\"Отчеттуулук жана Аналитика\" иштеп чыгуучусу", "company": "Кумтор Голд Компани", "dates": "Окт 2025 — Учурда", "desc": "ERP чечимдерин жана башка аналитикалык эсепке алуу системаларын иштеп чыгуу/өнүктүрүү, программалык код жазуу, процесстерди оптималдаштыруу.", "img": "kgc.jpg", "icon": "fa-code" },
         { "role": "Бизнес-аналитик", "company": "Кумтор Голд Компани", "dates": "Авг 2023 — Окт 2025", "desc": "Бизнес процесстерди талдоо, ТЗ иштеп чыгуу, тестирлөө, документтештирүү.", "img": "kgc.jpg", "icon": "fa-project-diagram" },
         { "role": "Ментор (Data Analysis)", "company": "CodeInfinity", "dates": "Июнь 2024 — Март 2025", "desc": "Маалыматтарды талдоо боюнча окутуу: Excel, SQL, Power BI.", "img": "CodeInfinity.jpg", "icon": "fa-chalkboard-teacher" },
         { "role": "Тренер-консультант", "company": "DenMar", "dates": "Фев 2023 — Янв 2025", "desc": "MS Excel боюнча сабактарды өткөрүү жана тренингдерди жүргүзүү (Pro деңгээл).", "img": "DenMar.jpg", "icon": "fa-file-excel" },
@@ -206,7 +206,7 @@
       "sectionTitle": "Professional Journey",
       "showMore": "Show more",
       "jobs": [
-        { "role": "Reporting & Analytics Developer", "company": "Kumtor Gold Company", "dates": "Oct 2025 — Present", "desc": "Bug fixing, writing software code, optimizing processes.", "img": "kgc.jpg", "icon": "fa-code" },
+        { "role": "Reporting & Analytics Developer", "company": "Kumtor Gold Company", "dates": "Oct 2025 — Present", "desc": "Development/improvement of ERP solutions and other analytical accounting systems, writing software code, process optimization.", "img": "kgc.jpg", "icon": "fa-code" },
         { "role": "Business Analyst", "company": "Kumtor Gold Company", "dates": "Aug 2023 — Oct 2025", "desc": "Business process analysis, SRS development, testing, documentation.", "img": "kgc.jpg", "icon": "fa-project-diagram" },
         { "role": "Mentor (Data Analysis)", "company": "CodeInfinity", "dates": "Jun 2024 — Mar 2025", "desc": "Teaching Data Analysis: Excel, SQL, Power BI.", "img": "CodeInfinity.jpg", "icon": "fa-chalkboard-teacher" },
         { "role": "Trainer-Consultant", "company": "DenMar", "dates": "Feb 2023 — Jan 2025", "desc": "Conducting lessons and trainings on MS Excel (Pro level).", "img": "DenMar.jpg", "icon": "fa-file-excel" },

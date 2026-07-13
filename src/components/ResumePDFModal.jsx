@@ -81,7 +81,7 @@ export default function ResumePDFModal({ isOpen, onClose, lang }) {
               </p>
 
               {/* Contacts row */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-2 mt-4 text-[10px] text-slate-650 pt-3 border-t border-slate-100">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-2 mt-4 text-[10px] text-slate-655 pt-3 border-t border-slate-100">
                 <div className="flex items-center gap-1.5">
                   <i className="fa-solid fa-location-dot text-blue-500 w-3 text-center" />
                   <span>{labels.location}</span>
@@ -90,6 +90,12 @@ export default function ResumePDFModal({ isOpen, onClose, lang }) {
                   <i className="fa-solid fa-phone text-blue-500 w-3 text-center" />
                   <a href="tel:+996500888268" className="hover:text-blue-600 hover:underline">
                     +996 500 888 268
+                  </a>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <i className="fa-solid fa-envelope text-blue-500 w-3 text-center" />
+                  <a href="mailto:kutmanomuraliev012@gmail.com" className="hover:text-blue-600 hover:underline truncate">
+                    kutmanomuraliev012@gmail.com
                   </a>
                 </div>
                 <div className="flex items-center gap-1.5">
@@ -104,7 +110,7 @@ export default function ResumePDFModal({ isOpen, onClose, lang }) {
                     @kutya_omuraliev
                   </a>
                 </div>
-                <div className="flex items-center gap-1.5 md:col-span-2">
+                <div className="flex items-center gap-1.5">
                   <i className="fa-solid fa-globe text-blue-500 w-3 text-center" />
                   <a href="https://kutya001.github.io/KutEmpResume/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 hover:underline truncate">
                     {labels.portfolio}: kutya001.github.io/KutEmpResume/

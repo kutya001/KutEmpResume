@@ -307,12 +307,15 @@ export default function App() {
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold">{data.nav.contact}</h2>
           </div>
-          <div className="flex justify-center gap-6 mb-12">
+          <div className="flex justify-center gap-6 mb-12 flex-wrap">
             <a href="https://t.me/kutya_omuraliev" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-400 text-3xl transition-transform hover:-translate-y-1">
               <i className="fab fa-telegram" />
             </a>
             <a href="https://wa.me/996500888268" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-green-400 text-3xl transition-transform hover:-translate-y-1">
               <i className="fab fa-whatsapp" />
+            </a>
+            <a href="mailto:kutmanomuraliev012@gmail.com" className="text-slate-400 hover:text-red-400 text-3xl transition-transform hover:-translate-y-1">
+              <i className="fas fa-envelope" />
             </a>
             <a href="https://www.instagram.com/_omuraliev_kutman_/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-pink-400 text-3xl transition-transform hover:-translate-y-1">
               <i className="fab fa-instagram" />

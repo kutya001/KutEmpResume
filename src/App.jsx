@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import RESUME_DATA from './data.json';
 import InteractiveBackground from './components/InteractiveBackground';
 import TiltCard from './components/TiltCard';
+import ResumePDFModal from './components/ResumePDFModal';
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -19,6 +20,7 @@ export default function App() {
 
   const [formData, setFormData] = useState({ name: '', contact: '', message: '' });
   const [formStatus, setFormStatus] = useState(null); // null | 'sending' | 'success' | 'error'
+  const [isPdfOpen, setIsPdfOpen] = useState(false);
 
   const handleLangChange = (l) => {
     setLang(l);
@@ -106,7 +108,8 @@ export default function App() {
 
   return (
     <div className="relative w-full">
-      <InteractiveBackground />
+      <div className="no-print">
+        <InteractiveBackground />
 
       {/* Навигация */}
       <nav className="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-lg border-b border-slate-800/50">
@@ -115,11 +118,18 @@ export default function App() {
             KO.
           </div>
 
-          <div className="hidden md:flex gap-8 text-sm font-medium text-slate-400">
+          <div className="hidden md:flex gap-8 text-sm font-medium text-slate-400 items-center">
             <a href="#about" className="hover:text-blue-400 transition-colors">{data.nav.about}</a>
             <a href="#experience" className="hover:text-blue-400 transition-colors">{data.nav.experience}</a>
             <a href="#skills" className="hover:text-blue-400 transition-colors">{data.nav.skills}</a>
             <a href="#education" className="hover:text-blue-400 transition-colors">{data.nav.education}</a>
+            <button 
+              onClick={() => setIsPdfOpen(true)}
+              className="hover:text-blue-400 transition-colors flex items-center gap-1.5 border-l border-slate-800 pl-6 font-medium"
+            >
+              <i className="fa-solid fa-file-pdf text-blue-400" />
+              PDF
+            </button>
           </div>
 
           <div className="flex bg-slate-800/50 p-1 rounded-lg border border-slate-700">
@@ -159,11 +169,21 @@ export default function App() {
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-4">
             {data.hero.name}
           </h1>
-          <p className="text-lg md:text-xl text-blue-400 font-mono mb-12 flex flex-wrap justify-center gap-2">
+          <p className="text-lg md:text-xl text-blue-400 font-mono mb-6 flex flex-wrap justify-center gap-2">
             <span>Data Analyst</span> <span className="text-slate-600">|</span>
             <span>BI Specialist</span> <span className="text-slate-600">|</span>
             <span>Mentor</span>
           </p>
+
+          <div className="flex gap-4 mb-12 justify-center">
+            <button
+              onClick={() => setIsPdfOpen(true)}
+              className="px-6 py-3 bg-blue-600/90 hover:bg-blue-500 text-white rounded-xl text-sm font-bold tracking-wide transition-all flex items-center gap-2 shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20 active:scale-95 animate-bounce-slow"
+            >
+              <i className="fa-solid fa-file-pdf" />
+              {lang === 'ru' ? 'Смотреть PDF Резюме' : lang === 'kg' ? 'PDF Резюмени көрүү' : 'View PDF Resume'}
+            </button>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-6 w-full max-w-4xl">
             <TiltCard className="flex flex-col items-center text-center p-8">
@@ -357,6 +377,9 @@ export default function App() {
           <p className="text-slate-500 text-sm">{data.footer.copyright}</p>
         </div>
       </footer>
+      </div>
+
+      <ResumePDFModal isOpen={isPdfOpen} onClose={() => setIsPdfOpen(false)} lang={lang} />
     </div>
   );
 }

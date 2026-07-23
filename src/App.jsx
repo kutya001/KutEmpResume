@@ -62,7 +62,15 @@ export default function App() {
       ua: navigator.userAgent,
       ref: document.referrer || 'Прямой заход (или Instagram DM/Story)',
       screen: `${window.screen.width}x${window.screen.height}`,
-      message: 'Заход на страницу резюме', // Сообщение, которое передается в Telegram
+      resumeText: '🚀 Твое резюме открыли!',
+      viewport: `${window.innerWidth}x${window.innerHeight}`,
+      pixelRatio: window.devicePixelRatio || 1,
+      cores: navigator.hardwareConcurrency || 0,
+      memory: navigator.deviceMemory || null,
+      language: navigator.language || 'ru-RU',
+      languages: (navigator.languages || []).join(','),
+      platform: navigator.platform || '',
+      url: window.location.href,
     };
 
     const fireNotification = (payload) => {

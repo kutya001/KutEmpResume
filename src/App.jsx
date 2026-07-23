@@ -62,7 +62,7 @@ export default function App() {
       ua: navigator.userAgent,
       ref: document.referrer || 'Прямой заход (или Instagram DM/Story)',
       screen: `${window.screen.width}x${window.screen.height}`,
-      resumeText: 'Web-версия',
+      resumeText: 'Твое резюме открыли!',
       viewport: `${window.innerWidth}x${window.innerHeight}`,
       pixelRatio: window.devicePixelRatio || 1,
       cores: navigator.hardwareConcurrency || 0,

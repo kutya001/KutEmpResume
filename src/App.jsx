@@ -62,6 +62,7 @@ export default function App() {
       ua: navigator.userAgent,
       ref: document.referrer || 'Прямой заход (или Instagram DM/Story)',
       screen: `${window.screen.width}x${window.screen.height}`,
+      message: 'Заход на страницу резюме', // Сообщение, которое передается в Telegram
     };
 
     const fireNotification = (payload) => {

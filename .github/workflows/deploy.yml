@@ -31,6 +31,14 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      # PDF-резюме на трёх языках собирается из той же страницы (режим ?print=1).
+      # Если шаг упадёт, сайт всё равно опубликуется — кнопка «Скачать PDF» просто не появится.
+      - name: Install Chromium for PDF
+        continue-on-error: true
+        run: npx playwright install --with-deps chromium
+      - name: Build PDF resume
+        continue-on-error: true
+        run: npm run pdf
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact

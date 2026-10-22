@@ -1,0 +1,131 @@
+{
+  "_comment": "Проекты для раздела «Проекты» и PDF. skills — id навыков из shared/career.json. result можно не заполнять; todo видно только в превью — это подсказка, какую цифру добавить.",
+  "items": [
+    {
+      "id": "sp-optimization",
+      "icon": "fa-gauge-high",
+      "skills": ["sql"],
+      "title": { "ru": "Ускорение отчёта по основным средствам", "kg": "Негизги каражаттар боюнча отчетту тездетүү", "en": "Speeding up a fixed-assets report" },
+      "context": { "ru": "MS SQL Server · хранимая процедура", "kg": "MS SQL Server · сакталуучу процедура", "en": "MS SQL Server · stored procedure" },
+      "problem": {
+        "ru": "Отчёт по основным средствам в учётной системе формировался слишком долго.",
+        "kg": "Эсепке алуу системасындагы негизги каражаттар боюнча отчет өтө узак түзүлчү.",
+        "en": "A fixed-assets report in the accounting system took too long to build."
+      },
+      "solution": {
+        "ru": "Переписал хранимую процедуру: сначала данные материализуются во временные таблицы с индексами, затем идёт расчёт.",
+        "kg": "Сакталуучу процедураны кайра жаздым: адегенде маалыматтар индекстери бар убактылуу таблицаларга чогултулат, андан кийин эсептөө жүрөт.",
+        "en": "Rewrote the stored procedure: data is first materialized into indexed temp tables, then the calculation runs."
+      },
+      "result": null,
+      "todo": "Добавьте цифры: сколько формировался отчёт до и после."
+    },
+    {
+      "id": "sql-checker",
+      "icon": "fa-list-check",
+      "skills": ["sql", "js"],
+      "title": { "ru": "Проверка SQL-кода по стандартам", "kg": "SQL-кодду стандарттар боюнча текшерүү", "en": "SQL coding standards checker" },
+      "context": { "ru": "HTML-инструмент · JavaScript", "kg": "HTML-курал · JavaScript", "en": "HTML tool · JavaScript" },
+      "problem": {
+        "ru": "SQL-скрипты нужно было вручную сверять с корпоративными стандартами оформления.",
+        "kg": "SQL-скрипттерди корпоративдик стандарттар менен кол менен салыштыруу керек болчу.",
+        "en": "SQL scripts had to be checked against corporate coding standards by hand."
+      },
+      "solution": {
+        "ru": "Загрузка папки с .sql-файлами, визуальный редактор правил, отчёт по каждому файлу и проверка порядка выполнения скриптов.",
+        "kg": ".sql-файлдары бар папканы жүктөө, эрежелердин визуалдык редактору, ар бир файл боюнча отчет жана скрипттердин аткарылуу тартибин текшерүү.",
+        "en": "Upload a folder of .sql files, edit the rules visually, get a per-file report and an execution-order check."
+      },
+      "result": {
+        "ru": "Папка скриптов проверяется в один клик, нарушения видны по каждому файлу.",
+        "kg": "Скрипттер папкасы бир чыкылдатуу менен текшерилет, бузуулар ар бир файл боюнча көрүнөт.",
+        "en": "A whole folder of scripts is checked in one click, with violations listed per file."
+      },
+      "todo": "Можно добавить: сколько скриптов проверяется и сколько времени это экономит."
+    },
+    {
+      "id": "erd-studio",
+      "icon": "fa-diagram-project",
+      "skills": ["sql", "js"],
+      "title": { "ru": "ERD Studio", "kg": "ERD Studio", "en": "ERD Studio" },
+      "context": { "ru": "Веб-приложение в одном файле · MS SQL Server", "kg": "Бир файлдагы веб-тиркеме · MS SQL Server", "en": "Single-file web app · MS SQL Server" },
+      "problem": {
+        "ru": "Нужно было быстро разобраться в структуре корпоративной базы данных на тысячи таблиц.",
+        "kg": "Миңдеген таблицалары бар корпоративдик маалымат базасынын түзүлүшүн тез түшүнүү керек болчу.",
+        "en": "Needed to quickly understand the structure of a corporate database with thousands of tables."
+      },
+      "solution": {
+        "ru": "SQL-запрос выгружает структуру базы в JSON, приложение строит граф связей и ER-диаграммы, хранит заметки к таблицам и полям, есть фильтры и статистика.",
+        "kg": "SQL-суроо базанын түзүлүшүн JSON'го чыгарат, тиркеме байланыштардын графын жана ER-диаграммаларды курат, таблицаларга жана талааларга эскертмелерди сактайт, чыпкалар жана статистика бар.",
+        "en": "A SQL query exports the schema to JSON; the app builds a relationship graph and ER diagrams, keeps notes on tables and fields, with filters and stats."
+      },
+      "result": {
+        "ru": "Связи между таблицами видны наглядно, а знания о базе собраны в одном месте.",
+        "kg": "Таблицалардын ортосундагы байланыштар көрүнүктүү, база тууралуу билим бир жерде чогултулган.",
+        "en": "Table relationships are easy to see, and knowledge about the database lives in one place."
+      },
+      "todo": null
+    },
+    {
+      "id": "mytools",
+      "icon": "fa-file-excel",
+      "skills": ["excel", "sql"],
+      "title": { "ru": "MyTools.xlam", "kg": "MyTools.xlam", "en": "MyTools.xlam" },
+      "context": { "ru": "Надстройка Excel · VBA", "kg": "Excel кошумчасы · VBA", "en": "Excel add-in · VBA" },
+      "problem": {
+        "ru": "В Excel под рукой должны быть запросы к базе данных, официальные курсы и инструменты для работы с ячейками.",
+        "kg": "Excel'де маалымат базасына суроолор, расмий курстар жана уячалар менен иштөө куралдары дайыма колдо болушу керек.",
+        "en": "Database queries, official rates and cell tools needed to be one click away in Excel."
+      },
+      "solution": {
+        "ru": "Своя надстройка: SQL Runner для запросов к базе прямо из Excel, курсы НБКР и цены LBMA, набор инструментов для ячеек.",
+        "kg": "Өзүмдүн кошумчам: Excel'ден түз эле базага суроо жөнөтүү үчүн SQL Runner, КРУБ курстары жана LBMA баалары, уячалар үчүн куралдар.",
+        "en": "My own add-in: SQL Runner to query databases from Excel, NBKR exchange rates and LBMA prices, a set of cell tools."
+      },
+      "result": {
+        "ru": "Частые задачи выполняются из одной вкладки Excel.",
+        "kg": "Көп кездешкен тапшырмалар Excel'дин бир өтмөгүнөн аткарылат.",
+        "en": "Everyday tasks run from a single Excel tab."
+      },
+      "todo": null
+    },
+    {
+      "id": "odata",
+      "icon": "fa-plug",
+      "skills": ["1c", "js"],
+      "title": { "ru": "1C OData Explorer", "kg": "1C OData Explorer", "en": "1C OData Explorer" },
+      "context": { "ru": "HTML-инструмент · 1С OData API", "kg": "HTML-курал · 1С OData API", "en": "HTML tool · 1C OData API" },
+      "problem": {
+        "ru": "Удобно просматривать данные 1С через OData API и сразу получать готовый код запроса.",
+        "kg": "1С маалыматтарын OData API аркылуу ыңгайлуу көрүү жана суроонун даяр кодун дароо алуу.",
+        "en": "Browse 1C data through the OData API and get ready-to-use request code right away."
+      },
+      "solution": {
+        "ru": "Визуальный конструктор запросов, просмотр объектов 1С и генерация кода запроса на шести языках.",
+        "kg": "Суроолордун визуалдык конструктору, 1С объекттерин көрүү жана суроонун кодун алты тилде түзүү.",
+        "en": "Visual query builder, 1C object browser and request code generation in six languages."
+      },
+      "result": null,
+      "todo": null
+    },
+    {
+      "id": "wb",
+      "icon": "fa-chart-column",
+      "skills": ["gas", "rest"],
+      "title": { "ru": "WB Учёт v2.0", "kg": "WB Учёт v2.0", "en": "WB Uchyot v2.0" },
+      "context": { "ru": "Google Apps Script · Wildberries API", "kg": "Google Apps Script · Wildberries API", "en": "Google Apps Script · Wildberries API" },
+      "problem": {
+        "ru": "Продавцу Wildberries нужна аналитика продаж в Google Таблицах.",
+        "kg": "Wildberries сатуучусуна Google Таблицаларда сатуу аналитикасы керек.",
+        "en": "A Wildberries seller needs sales analytics in Google Sheets."
+      },
+      "solution": {
+        "ru": "Проект из 9 файлов на Apps Script: интеграция с API Wildberries, структурированный журнал действий, руководство для разработчика.",
+        "kg": "Apps Script'теги 9 файлдан турган долбоор: Wildberries API менен интеграция, структураланган аракеттер журналы, иштеп чыгуучу үчүн колдонмо.",
+        "en": "A 9-file Apps Script project: Wildberries API integration, structured logging and a developer guide."
+      },
+      "result": null,
+      "todo": null
+    }
+  ]
+}

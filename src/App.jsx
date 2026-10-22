@@ -5,6 +5,8 @@ import TiltCard from './components/TiltCard';
 import ResumePDFModal from './components/ResumePDFModal';
 
 const BASE = import.meta.env.BASE_URL;
+const isExt = (p) => /^https?:\/\//.test(p);
+const imgSrc = (p) => (isExt(p) ? p : `${BASE}${p}`);
 
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxZryXC1jHMrRt_u8GJbtwexF-OVWaXLCfxbC6wBglLnGukZ7fmRh9ilrZJYWSp2e8X/exec';
 
@@ -225,7 +227,7 @@ export default function App() {
             {data.experience.jobs.map((job, idx) => (
               <TiltCard key={idx} className="flex flex-col h-full">
                 <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700 mb-4 overflow-hidden">
-                  <img src={`${BASE}${job.img}`} alt={job.company} className="w-full h-full object-cover" />
+                  <img src={imgSrc(job.img)} alt={job.company} className={`w-full h-full ${isExt(job.img) ? 'object-contain bg-white p-1' : 'object-cover'}`} />
                 </div>
                 <div className="mt-auto">
                   <span className="text-xs font-mono text-slate-500 block mb-1">{job.dates}</span>
